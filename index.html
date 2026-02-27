@@ -295,6 +295,20 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
   font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.65;
   margin-bottom: 20px;
 }
+.topic-peek {
+  margin: 16px 0 20px; padding: 14px 16px;
+  background: rgba(255,255,255,0.03);
+  border-left: 2px solid rgba(201,168,76,0.3);
+  border-radius: 0 6px 6px 0;
+}
+.topic-peek-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 6px;
+}
+.topic-peek p {
+  font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.55;
+  font-style: italic; margin: 0;
+}
 .topic-formats {
   display: flex; gap: 8px; flex-wrap: wrap;
 }
@@ -369,6 +383,14 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
   content: '\2713'; color: var(--gold); font-weight: 700;
   flex-shrink: 0; margin-top: 1px;
 }
+.format-details li.format-deal {
+  margin-top: 8px; padding-top: 10px;
+  border-top: 1px solid var(--gray-200);
+  color: var(--navy); font-weight: 500;
+}
+.format-details li.format-deal::before {
+  content: ''; display: none;
+}
 
 /* ====== READY CTA ====== */
 .ready-cta {
@@ -413,166 +435,6 @@ nav .container { display: flex; align-items: center; justify-content: space-betw
   font-style: italic; line-height: 1.6;
 }
 .ready-note strong { color: rgba(255,255,255,0.55); font-weight: 500; font-style: normal; }
-
-/* ====== DEAL REVIEW ====== */
-.deal-review {
-  padding: 100px 0;
-  background: var(--navy-deep);
-  position: relative; overflow: hidden;
-}
-.deal-review::before {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(circle at 80% 30%, rgba(201,168,76,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 10% 70%, rgba(26,61,92,0.4) 0%, transparent 50%);
-}
-.deal-review .container { position: relative; z-index: 2; }
-.deal-layout {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.deal-content .section-label { color: var(--gold-light); }
-.deal-content h2 {
-  font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 400; line-height: 1.15; color: var(--white); margin-bottom: 20px;
-}
-.deal-content > p {
-  font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.7;
-  font-weight: 300; margin-bottom: 32px; max-width: 460px;
-}
-.deal-features { display: flex; flex-direction: column; gap: 18px; }
-.deal-feature { display: flex; gap: 14px; align-items: flex-start; }
-.deal-feature-icon {
-  width: 36px; height: 36px; background: rgba(201,168,76,0.12);
-  border-radius: 8px; display: flex; align-items: center;
-  justify-content: center; font-size: 16px; flex-shrink: 0; margin-top: 2px;
-}
-.deal-feature h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
-.deal-feature p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.55; }
-.deal-note {
-  margin-top: 28px; font-size: 12px; color: rgba(255,255,255,0.3);
-  font-style: italic;
-}
-.deal-card-mock {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px; padding: 32px; position: relative;
-}
-.deal-card-mock::before {
-  content: 'MEMBERS ONLY'; position: absolute; top: -12px; left: 32px;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
-  color: var(--navy-deep); background: var(--gold); padding: 4px 14px; border-radius: 4px;
-}
-.deal-mock-header {
-  font-family: var(--serif); font-size: 20px; color: var(--white);
-  margin-bottom: 6px; margin-top: 8px;
-}
-.deal-mock-date {
-  font-size: 13px; color: rgba(255,255,255,0.4);
-  margin-bottom: 20px; padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.deal-mock-agenda { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-.deal-mock-agenda li {
-  display: flex; align-items: center; gap: 12px;
-  font-size: 13px; color: rgba(255,255,255,0.6);
-}
-.deal-mock-agenda li .time {
-  font-size: 11px; font-weight: 500; color: var(--gold);
-  width: 50px; flex-shrink: 0;
-}
-.deal-mock-footer {
-  margin-top: 24px; padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.deal-mock-attendees { display: flex; }
-.deal-mock-avatar {
-  width: 30px; height: 30px; border-radius: 50%;
-  border: 2px solid var(--navy-deep); display: flex;
-  align-items: center; justify-content: center;
-  font-size: 10px; font-weight: 600; margin-left: -8px;
-}
-.deal-mock-avatar:first-child { margin-left: 0; }
-.deal-mock-avatar.av1 { background: var(--navy-light); color: var(--white); }
-.deal-mock-avatar.av2 { background: #3d6b8e; color: var(--white); }
-.deal-mock-avatar.av3 { background: var(--gold); color: var(--navy-deep); }
-.deal-mock-avatar.av4 { background: #5a8aaa; color: var(--white); }
-.deal-mock-avatar.av5 { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); }
-.deal-mock-spots { font-size: 11px; color: var(--gold); font-weight: 500; }
-
-/* ====== CERTIFICATE ====== */
-.certificate {
-  padding: 110px 0;
-  background: var(--cream);
-  position: relative; overflow: hidden;
-}
-.cert-layout {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.cert-content h2 {
-  font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 400; line-height: 1.15; color: var(--navy); margin-bottom: 16px;
-}
-.cert-content > p {
-  font-size: 16px; color: var(--gray-500); line-height: 1.7;
-  font-weight: 300; margin-bottom: 32px; max-width: 440px;
-}
-.cert-steps {
-  display: flex; flex-direction: column; gap: 0; position: relative;
-}
-.cert-steps::before {
-  content: ''; position: absolute; top: 24px; left: 19px; bottom: 24px;
-  width: 2px; background: var(--gray-200);
-}
-.cert-step { display: flex; gap: 20px; align-items: flex-start; padding: 14px 0; position: relative; }
-.cert-step-num {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--white); border: 2px solid var(--gold);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-size: 16px; color: var(--gold);
-  flex-shrink: 0; position: relative; z-index: 2;
-}
-.cert-step:last-child .cert-step-num {
-  background: var(--gold); color: var(--navy-deep); border-color: var(--gold);
-}
-.cert-step h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 3px; margin-top: 8px; }
-.cert-step p { font-size: 13px; color: var(--gray-500); line-height: 1.55; }
-.cert-visual { display: flex; justify-content: center; align-items: center; }
-.cert-badge {
-  width: 300px; background: var(--navy-deep);
-  border-radius: 20px; padding: 44px 32px;
-  text-align: center; position: relative; overflow: hidden;
-  box-shadow: 0 32px 80px rgba(15,42,68,0.25);
-}
-.cert-badge::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.15) 0%, transparent 60%);
-}
-.cert-badge-inner { position: relative; z-index: 2; }
-.cert-seal {
-  width: 80px; height: 80px; margin: 0 auto 20px;
-  border: 2px solid var(--gold); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; position: relative;
-}
-.cert-seal::after {
-  content: ''; position: absolute; inset: 6px;
-  border: 1px solid rgba(201,168,76,0.3); border-radius: 50%;
-}
-.cert-seal-icon { font-size: 28px; }
-.cert-badge-title {
-  font-family: var(--serif); font-size: 10px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
-}
-.cert-badge-name {
-  font-family: var(--serif); font-size: 22px; color: var(--white);
-  line-height: 1.2; margin-bottom: 4px;
-}
-.cert-badge-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 28px; font-weight: 300; }
-.cert-badge-line { width: 50px; height: 1px; background: rgba(201,168,76,0.3); margin: 0 auto 12px; }
-.cert-badge-org {
-  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(255,255,255,0.3);
-}
 
 /* ====== ADVISORS ====== */
 .advisors {
@@ -785,10 +647,6 @@ footer {
   .gain-grid { grid-template-columns: 1fr; max-width: 480px; }
   .topic-grid { grid-template-columns: 1fr; max-width: 480px; }
   .format-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-  .deal-layout { grid-template-columns: 1fr; gap: 48px; }
-  .deal-visual { order: -1; }
-  .cert-layout { grid-template-columns: 1fr; gap: 48px; }
-  .cert-visual { order: -1; }
   .advisor-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
 }
 @media (max-width: 768px) {
@@ -808,7 +666,6 @@ footer {
   .enroll-alt-ctas a { text-align: center; }
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
-  .cert-badge { width: 260px; padding: 36px 24px; }
 }
 </style>
 </head>
@@ -824,9 +681,8 @@ footer {
     <ul class="nav-links" id="navLinks">
       <li><a href="#topics">What You'll Learn</a></li>
       <li><a href="#formats">How to Learn</a></li>
-      <li><a href="#deal-review">Deal Review</a></li>
       <li><a href="#advisors">Talk to Us</a></li>
-      <li><a href="#enroll" class="nav-cta">Get Started</a></li>
+      <li><a href="#advisors" class="nav-cta">Book a Call</a></li>
     </ul>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -848,7 +704,7 @@ footer {
           Get Started
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
-        <a href="#topics" class="btn-secondary">See What You'll Learn</a>
+        <a href="#advisors" class="btn-secondary">Book a Call &rarr;</a>
       </div>
       <div class="hero-note">
         <div class="hero-stat">
@@ -908,6 +764,10 @@ footer {
         <div class="topic-num">01</div>
         <div class="topic-title">VC Fundamentals</div>
         <p class="topic-desc">What venture capital is, how it works, the J-curve, risk and return dynamics, liquidity expectations — and why VC has become an essential part of a diversified portfolio.</p>
+        <div class="topic-peek">
+          <div class="topic-peek-label">Sneak peek</div>
+          <p>"Why do most VC funds lose money on half their deals — and still generate strong returns?"</p>
+        </div>
         <div class="topic-formats">
           <span class="topic-format-tag">Online</span>
           <span class="topic-format-tag">Live</span>
@@ -918,6 +778,10 @@ footer {
         <div class="topic-num">02</div>
         <div class="topic-title">How VCs Evaluate Deals</div>
         <p class="topic-desc">What separates a good deal from a great one? Learn how professional VCs source, screen, and diligence opportunities — and see inside AV's process from deal flow to fund construction.</p>
+        <div class="topic-peek">
+          <div class="topic-peek-label">Sneak peek</div>
+          <p>"Here's the actual memo our team wrote on a Series B deal — and why we passed."</p>
+        </div>
         <div class="topic-formats">
           <span class="topic-format-tag">Online</span>
           <span class="topic-format-tag">Live</span>
@@ -928,6 +792,10 @@ footer {
         <div class="topic-num">03</div>
         <div class="topic-title">How Working With Us Works</div>
         <p class="topic-desc">The practical stuff — how to choose a fund, what the minimums look like, what happens after you invest, tax considerations, and exactly how AV manages your capital.</p>
+        <div class="topic-peek">
+          <div class="topic-peek-label">Sneak peek</div>
+          <p>"Walk through an actual K-1, see a real portfolio dashboard, and learn what happens the day after you invest."</p>
+        </div>
         <div class="topic-formats">
           <span class="topic-format-tag">Online</span>
           <span class="topic-format-tag">Live</span>
@@ -956,6 +824,7 @@ footer {
           <li>On-demand video and reading</li>
           <li>Progress tracking and check-ins</li>
           <li>Typically 4–8 weeks</li>
+          <li class="format-deal">+ Monthly live deal review with AV's investment team</li>
         </ul>
       </div>
       <div class="format-card reveal reveal-delay-2">
@@ -967,6 +836,7 @@ footer {
           <li>Led by AV investment team</li>
           <li>Live Q&A and discussion</li>
           <li>Recordings if you miss one</li>
+          <li class="format-deal">+ Monthly live deal review with AV's investment team</li>
         </ul>
       </div>
       <div class="format-card reveal reveal-delay-3">
@@ -978,6 +848,7 @@ footer {
           <li>4-hour intensive session</li>
           <li>NYC, Boston, SF, Chicago + more</li>
           <li>Portfolio exercises included</li>
+          <li class="format-deal">+ Monthly live deal review with AV's investment team</li>
         </ul>
       </div>
     </div>
@@ -990,119 +861,12 @@ footer {
     <div class="ready-inner reveal">
       <div class="ready-label">You're closer than you think</div>
       <h2>Ready to <em>invest?</em></h2>
-      <p>You don't need to finish every topic or earn a certificate to get started. Once you understand the basics and feel confident — you're ready.</p>
+      <p>You don't need to finish every topic to get started. Once you understand the basics and feel confident — you're ready.</p>
       <div class="ready-actions">
         <a href="#enroll" class="btn-primary">Explore Funds</a>
         <a href="#" class="btn-secondary">Book a Call &rarr;</a>
       </div>
       <p class="ready-note"><strong>No pressure, no timeline.</strong> Some members invest after one session. Others take months. Either way, your advisor is here when you are.</p>
-    </div>
-  </div>
-</section>
-
-<!-- DEAL REVIEW -->
-<section class="deal-review" id="deal-review">
-  <div class="container">
-    <div class="deal-layout">
-      <div class="deal-content reveal">
-        <div class="section-label">Learn by Doing</div>
-        <h2>Monthly deal review with real VCs</h2>
-        <p>Theory builds the foundation. Practice builds the instincts. Join monthly live sessions where AV's investment team walks through actual deals — and you learn to think like a VC.</p>
-        <div class="deal-features">
-          <div class="deal-feature">
-            <div class="deal-feature-icon">&#128200;</div>
-            <div>
-              <h4>Real deal walkthroughs</h4>
-              <p>See how AV evaluates actual companies — the thesis, the market, and the risks.</p>
-            </div>
-          </div>
-          <div class="deal-feature">
-            <div class="deal-feature-icon">&#128483;</div>
-            <div>
-              <h4>Investment team-led</h4>
-              <p>The same people making AV's investment decisions lead each session.</p>
-            </div>
-          </div>
-          <div class="deal-feature">
-            <div class="deal-feature-icon">&#129504;</div>
-            <div>
-              <h4>Build pattern recognition</h4>
-              <p>Monthly exposure develops the investor instincts that only come from seeing real deals.</p>
-            </div>
-          </div>
-        </div>
-        <div class="deal-note">Open to all AV Academy members. No certificate required — just show up curious.</div>
-      </div>
-      <div class="deal-visual reveal reveal-delay-2">
-        <div class="deal-card-mock">
-          <div class="deal-mock-header">March Deal Review</div>
-          <div class="deal-mock-date">Thursday, Mar 19 &middot; 12:00 PM ET &middot; Zoom</div>
-          <ul class="deal-mock-agenda">
-            <li><span class="time">12:00</span> Market context and trends</li>
-            <li><span class="time">12:10</span> Deal #1: Series B — AI infrastructure</li>
-            <li><span class="time">12:30</span> Deal #2: Series A — Climate tech</li>
-            <li><span class="time">12:45</span> Member Q&A and discussion</li>
-          </ul>
-          <div class="deal-mock-footer">
-            <div class="deal-mock-attendees">
-              <div class="deal-mock-avatar av1">JT</div>
-              <div class="deal-mock-avatar av2">KL</div>
-              <div class="deal-mock-avatar av3">AV</div>
-              <div class="deal-mock-avatar av4">MR</div>
-              <div class="deal-mock-avatar av5">+24</div>
-            </div>
-            <div class="deal-mock-spots">All members welcome</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATE -->
-<section class="certificate" id="certificate">
-  <div class="container">
-    <div class="cert-layout">
-      <div class="cert-content reveal">
-        <div class="section-label">Go Deeper</div>
-        <h2>Want the full experience? Earn your certificate.</h2>
-        <p>Already investing or planning to? Great — you don't need this. But if you want to master the material and have something to show for it, the AV Academy certificate is here for you.</p>
-        <div class="cert-steps">
-          <div class="cert-step">
-            <div class="cert-step-num">1</div>
-            <div>
-              <h4>Complete all three topics</h4>
-              <p>In any format — online, live, or in person.</p>
-            </div>
-          </div>
-          <div class="cert-step">
-            <div class="cert-step-num">2</div>
-            <div>
-              <h4>Pass the final assessment</h4>
-              <p>A short, straightforward quiz. Not designed to trick you — designed to confirm you've got it. Retake anytime.</p>
-            </div>
-          </div>
-          <div class="cert-step">
-            <div class="cert-step-num">3</div>
-            <div>
-              <h4>Earn your certificate</h4>
-              <p>A credential that says you put in the work. Share it, frame it, or just know you did the thing.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cert-visual reveal reveal-delay-2">
-        <div class="cert-badge">
-          <div class="cert-badge-inner">
-            <div class="cert-seal"><span class="cert-seal-icon">&#127942;</span></div>
-            <div class="cert-badge-title">Certificate of Completion</div>
-            <div class="cert-badge-name">AV Academy</div>
-            <div class="cert-badge-sub">Venture Capital Foundations</div>
-            <div class="cert-badge-line"></div>
-            <div class="cert-badge-org">Alumni Ventures</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -1179,7 +943,7 @@ footer {
               </label>
               <label class="member-option">
                 <input type="radio" name="member-status" value="new">
-                <span>I'd like to join the AV syndicate</span>
+                <span>I'm new — I'd like to learn more about joining AV</span>
               </label>
             </div>
           </div>
@@ -1233,15 +997,6 @@ footer {
       </div>
       <div class="faq-item reveal">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-          What's the assessment like?
-          <span class="faq-toggle">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>A short, straightforward quiz covering the key ideas from each topic. It's designed to confirm understanding, not trip you up. You can retake it if needed.</p>
-        </div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
           Can I switch formats after I start?
           <span class="faq-toggle">+</span>
         </button>
@@ -1251,20 +1006,11 @@ footer {
       </div>
       <div class="faq-item reveal">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-          Do I need the certificate to invest?
+          What's the deal review?
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-answer">
-          <p>No. You can invest whenever you feel ready — the certificate is entirely optional. It's there for people who want the full experience, but it's not a requirement for anything. Many members invest after just a topic or two.</p>
-        </div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-          Who can access the deal review sessions?
-          <span class="faq-toggle">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>All AV Academy members can join deal review sessions — no certificate required. Just enroll in the Academy and you're in. It's one of the best ways to learn, regardless of where you are in the program.</p>
+          <p>Every month, AV's investment team walks through actual deals on a live call — the thesis, the market, and why they passed or invested. It's included in every format and it's one of the best ways to build real investor instincts.</p>
         </div>
       </div>
     </div>
