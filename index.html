@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AV Academy — Alumni Ventures</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0f2a44;
+  --navy-deep: #091c30;
+  --navy-mid: #1a3d5c;
+  --navy-light: #2a5478;
+  --gold: #c9a84c;
+  --gold-light: #dfc476;
+  --gold-pale: #f5edda;
+  --cream: #faf8f4;
+  --white: #ffffff;
+  --gray-100: #f7f7f7;
+  --gray-200: #ebebeb;
+  --gray-300: #d4d4d4;
+  --gray-500: #8a8a8a;
+  --gray-700: #4a4a4a;
+  --gray-900: #1a1a1a;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--gray-900);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* ====== NAV ====== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(15, 42, 68, 0.97);
+  backdrop-filter: blur(12px);
+  padding: 12px 0;
+  box-shadow: 0 1px 0 rgba(201, 168, 76, 0.15);
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo {
+  width: 36px; height: 36px;
+  background: var(--gold); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 18px; color: var(--navy-deep); font-weight: 700;
+}
+.nav-wordmark {
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: var(--white); letter-spacing: 0.08em; text-transform: uppercase;
+}
+.nav-wordmark span { color: var(--gold-light); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.7);
+  text-decoration: none; transition: color 0.3s; letter-spacing: 0.02em;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-cta {
+  font-size: 13px !important; font-weight: 500 !important;
+  color: var(--navy-deep) !important; background: var(--gold);
+  padding: 10px 24px; border-radius: 6px; transition: all 0.3s !important;
+}
+.nav-cta:hover { background: var(--gold-light) !important; }
+.mobile-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+}
+.mobile-toggle span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+
+/* ====== HERO ====== */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--navy-deep); overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,61,92,0.7) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 60% 50%, black, transparent);
+}
+.hero-accent {
+  position: absolute; top: 15%; right: 8%; width: 400px; height: 400px;
+  border: 1px solid rgba(201,168,76,0.12); border-radius: 50%;
+  animation: pulse-ring 8s ease-in-out infinite;
+}
+.hero-accent::after {
+  content: ''; position: absolute; inset: 40px;
+  border: 1px solid rgba(201,168,76,0.08); border-radius: 50%;
+}
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.6; }
+}
+.hero .container { position: relative; z-index: 2; padding-top: 120px; padding-bottom: 80px; }
+.hero-content { max-width: 720px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 500; color: var(--gold);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(40px, 5.5vw, 72px);
+  font-weight: 400; line-height: 1.08; color: var(--white);
+  margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero-sub {
+  font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.6);
+  max-width: 540px; margin-bottom: 44px; font-weight: 300;
+  opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+}
+.hero-actions {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px; background: var(--gold); color: var(--navy-deep);
+  font-family: var(--sans); font-size: 15px; font-weight: 600;
+  text-decoration: none; border-radius: 8px; transition: all 0.3s;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--gold-light); transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+}
+.btn-primary svg { width: 16px; height: 16px; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 28px; background: transparent; color: rgba(255,255,255,0.7);
+  font-family: var(--sans); font-size: 15px; font-weight: 400;
+  text-decoration: none; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s;
+}
+.btn-secondary:hover { border-color: rgba(201,168,76,0.4); color: var(--gold-light); }
+.hero-note {
+  margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; gap: 40px;
+  opacity: 0; animation: fadeUp 0.8s 1.1s forwards;
+}
+.hero-stat { font-size: 13px; color: rgba(255,255,255,0.4); letter-spacing: 0.02em; }
+.hero-stat strong {
+  display: block; font-family: var(--serif); font-size: 28px;
+  font-weight: 400; color: var(--white); margin-bottom: 4px;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== GAIN SECTION ====== */
+.gain {
+  padding: 110px 0;
+  background: var(--cream);
+  position: relative;
+}
+.gain::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gray-200), transparent);
+}
+.gain h2 {
+  font-family: var(--serif); font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400; line-height: 1.15; color: var(--navy);
+  max-width: 600px; margin-bottom: 56px;
+}
+.gain-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.gain-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: 12px; padding: 36px 28px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative; overflow: hidden;
+}
+.gain-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gain-card:hover {
+  border-color: rgba(201,168,76,0.3); transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(15,42,68,0.08);
+}
+.gain-card:hover::after { transform: scaleX(1); }
+.gain-icon {
+  width: 48px; height: 48px; background: var(--gold-pale);
+  border-radius: 10px; display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 20px;
+}
+.gain-card h3 {
+  font-family: var(--serif); font-size: 20px; font-weight: 400;
+  color: var(--navy); margin-bottom: 10px; line-height: 1.3;
+}
+.gain-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
+
+/* ====== TOPICS ====== */
+.topics {
+  padding: 110px 0;
+  background: var(--navy-deep);
+  position: relative; overflow: hidden;
+}
+.topics::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(201,168,76,0.06) 0%, transparent 70%);
+}
+.topics .container { position: relative; z-index: 2; }
+.topics .section-label { color: var(--gold-light); }
+.topics h2 {
+  font-family: var(--serif); font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400; line-height: 1.15; color: var(--white);
+  max-width: 520px; margin-bottom: 16px;
+}
+.topics .lead {
+  font-size: 17px; color: rgba(255,255,255,0.5);
+  max-width: 460px; margin-bottom: 64px; font-weight: 300; line-height: 1.7;
+}
+.topic-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+}
+.topic-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 40px 28px 36px;
+  position: relative; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.topic-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(201,168,76,0.25); transform: translateY(-4px);
+}
+.topic-num {
+  font-family: var(--serif); font-size: 48px;
+  color: rgba(201,168,76,0.2); line-height: 1; margin-bottom: 20px;
+}
+.topic-card:hover .topic-num { color: rgba(201,168,76,0.4); }
+.topic-title {
+  font-family: var(--serif); font-size: 22px; font-weight: 400;
+  color: var(--white); margin-bottom: 12px;
+}
+.topic-desc {
+  font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.65;
+  margin-bottom: 20px;
+}
+.topic-formats {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.topic-format-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--gold); background: rgba(201,168,76,0.1);
+  padding: 4px 10px; border-radius: 4px;
+}
+
+/* ====== FORMATS ====== */
+.formats {
+  padding: 110px 0;
+  background: var(--cream);
+  position: relative;
+}
+.formats-header {
+  text-align: center; max-width: 620px; margin: 0 auto 64px;
+}
+.formats h2 {
+  font-family: var(--serif); font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400; line-height: 1.15; color: var(--navy); margin-bottom: 16px;
+}
+.formats .lead {
+  font-size: 17px; color: var(--gray-500); font-weight: 300; line-height: 1.7;
+}
+.format-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.format-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: 16px; padding: 40px 32px 36px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative; overflow: hidden; display: flex; flex-direction: column;
+}
+.format-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.format-card:hover {
+  border-color: var(--gold); transform: translateY(-8px);
+  box-shadow: 0 24px 64px rgba(15,42,68,0.1);
+}
+.format-card:hover::before { transform: scaleX(1); }
+.format-icon {
+  width: 56px; height: 56px; background: var(--navy-deep);
+  border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 24px; margin-bottom: 24px;
+}
+.format-card h3 {
+  font-family: var(--serif); font-size: 24px; font-weight: 400;
+  color: var(--navy); margin-bottom: 6px;
+}
+.format-subtitle {
+  font-size: 13px; font-weight: 600; color: var(--gold);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px;
+}
+.format-card > p {
+  font-size: 14px; color: var(--gray-500); line-height: 1.7;
+  margin-bottom: 24px; flex: 1;
+}
+.format-details {
+  list-style: none; padding-top: 20px; border-top: 1px solid var(--gray-200);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.format-details li {
+  font-size: 13px; color: var(--gray-700);
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+}
+.format-details li::before {
+  content: '\2713'; color: var(--gold); font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+/* ====== READY CTA ====== */
+.ready-cta {
+  padding: 100px 0;
+  background: var(--navy-deep);
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.ready-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 70%);
+}
+.ready-cta .container { position: relative; z-index: 2; }
+.ready-inner { max-width: 640px; margin: 0 auto; }
+.ready-cta .ready-label {
+  font-size: 12px; font-weight: 600; color: var(--gold-light);
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px;
+}
+.ready-cta h2 {
+  font-family: var(--serif); font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400; line-height: 1.1; color: var(--white); margin-bottom: 20px;
+}
+.ready-cta h2 em { font-style: italic; color: var(--gold-light); }
+.ready-cta > .container p {
+  font-size: 17px; color: rgba(255,255,255,0.5); font-weight: 300;
+  line-height: 1.7; max-width: 500px; margin: 0 auto 40px;
+}
+.ready-actions {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.ready-actions .btn-primary {
+  padding: 18px 44px; font-size: 16px;
+}
+.ready-actions .btn-secondary {
+  padding: 18px 32px; font-size: 15px;
+  color: rgba(255,255,255,0.7);
+}
+.ready-note {
+  font-size: 14px; color: rgba(255,255,255,0.35);
+  font-style: italic; line-height: 1.6;
+}
+.ready-note strong { color: rgba(255,255,255,0.55); font-weight: 500; font-style: normal; }
+
+/* ====== DEAL REVIEW ====== */
+.deal-review {
+  padding: 100px 0;
+  background: var(--navy-deep);
+  position: relative; overflow: hidden;
+}
+.deal-review::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 10% 70%, rgba(26,61,92,0.4) 0%, transparent 50%);
+}
+.deal-review .container { position: relative; z-index: 2; }
+.deal-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.deal-content .section-label { color: var(--gold-light); }
+.deal-content h2 {
+  font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400; line-height: 1.15; color: var(--white); margin-bottom: 20px;
+}
+.deal-content > p {
+  font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.7;
+  font-weight: 300; margin-bottom: 32px; max-width: 460px;
+}
+.deal-features { display: flex; flex-direction: column; gap: 18px; }
+.deal-feature { display: flex; gap: 14px; align-items: flex-start; }
+.deal-feature-icon {
+  width: 36px; height: 36px; background: rgba(201,168,76,0.12);
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; font-size: 16px; flex-shrink: 0; margin-top: 2px;
+}
+.deal-feature h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+.deal-feature p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.55; }
+.deal-note {
+  margin-top: 28px; font-size: 12px; color: rgba(255,255,255,0.3);
+  font-style: italic;
+}
+.deal-card-mock {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 32px; position: relative;
+}
+.deal-card-mock::before {
+  content: 'MEMBERS ONLY'; position: absolute; top: -12px; left: 32px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--navy-deep); background: var(--gold); padding: 4px 14px; border-radius: 4px;
+}
+.deal-mock-header {
+  font-family: var(--serif); font-size: 20px; color: var(--white);
+  margin-bottom: 6px; margin-top: 8px;
+}
+.deal-mock-date {
+  font-size: 13px; color: rgba(255,255,255,0.4);
+  margin-bottom: 20px; padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.deal-mock-agenda { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.deal-mock-agenda li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13px; color: rgba(255,255,255,0.6);
+}
+.deal-mock-agenda li .time {
+  font-size: 11px; font-weight: 500; color: var(--gold);
+  width: 50px; flex-shrink: 0;
+}
+.deal-mock-footer {
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.deal-mock-attendees { display: flex; }
+.deal-mock-avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2px solid var(--navy-deep); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 600; margin-left: -8px;
+}
+.deal-mock-avatar:first-child { margin-left: 0; }
+.deal-mock-avatar.av1 { background: var(--navy-light); color: var(--white); }
+.deal-mock-avatar.av2 { background: #3d6b8e; color: var(--white); }
+.deal-mock-avatar.av3 { background: var(--gold); color: var(--navy-deep); }
+.deal-mock-avatar.av4 { background: #5a8aaa; color: var(--white); }
+.deal-mock-avatar.av5 { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); }
+.deal-mock-spots { font-size: 11px; color: var(--gold); font-weight: 500; }
+
+/* ====== CERTIFICATE ====== */
+.certificate {
+  padding: 110px 0;
+  background: var(--cream);
+  position: relative; overflow: hidden;
+}
+.cert-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.cert-content h2 {
+  font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400; line-height: 1.15; color: var(--navy); margin-bottom: 16px;
+}
+.cert-content > p {
+  font-size: 16px; color: var(--gray-500); line-height: 1.7;
+  font-weight: 300; margin-bottom: 32px; max-width: 440px;
+}
+.cert-steps {
+  display: flex; flex-direction: column; gap: 0; position: relative;
+}
+.cert-steps::before {
+  content: ''; position: absolute; top: 24px; left: 19px; bottom: 24px;
+  width: 2px; background: var(--gray-200);
+}
+.cert-step { display: flex; gap: 20px; align-items: flex-start; padding: 14px 0; position: relative; }
+.cert-step-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 16px; color: var(--gold);
+  flex-shrink: 0; position: relative; z-index: 2;
+}
+.cert-step:last-child .cert-step-num {
+  background: var(--gold); color: var(--navy-deep); border-color: var(--gold);
+}
+.cert-step h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 3px; margin-top: 8px; }
+.cert-step p { font-size: 13px; color: var(--gray-500); line-height: 1.55; }
+.cert-visual { display: flex; justify-content: center; align-items: center; }
+.cert-badge {
+  width: 300px; background: var(--navy-deep);
+  border-radius: 20px; padding: 44px 32px;
+  text-align: center; position: relative; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(15,42,68,0.25);
+}
+.cert-badge::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.15) 0%, transparent 60%);
+}
+.cert-badge-inner { position: relative; z-index: 2; }
+.cert-seal {
+  width: 80px; height: 80px; margin: 0 auto 20px;
+  border: 2px solid var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.cert-seal::after {
+  content: ''; position: absolute; inset: 6px;
+  border: 1px solid rgba(201,168,76,0.3); border-radius: 50%;
+}
+.cert-seal-icon { font-size: 28px; }
+.cert-badge-title {
+  font-family: var(--serif); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+}
+.cert-badge-name {
+  font-family: var(--serif); font-size: 22px; color: var(--white);
+  line-height: 1.2; margin-bottom: 4px;
+}
+.cert-badge-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 28px; font-weight: 300; }
+.cert-badge-line { width: 50px; height: 1px; background: rgba(201,168,76,0.3); margin: 0 auto 12px; }
+.cert-badge-org {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+}
+
+/* ====== ADVISORS ====== */
+.advisors {
+  padding: 100px 0;
+  background: var(--navy-deep);
+  position: relative; overflow: hidden;
+}
+.advisors::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 50%);
+}
+.advisors .container { position: relative; z-index: 2; }
+.advisors-header {
+  text-align: center; max-width: 560px; margin: 0 auto 56px;
+}
+.advisors .section-label { color: var(--gold-light); }
+.advisors h2 {
+  font-family: var(--serif); font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400; color: var(--white); margin-bottom: 12px;
+}
+.advisors .lead { font-size: 16px; color: rgba(255,255,255,0.45); font-weight: 300; line-height: 1.7; }
+.advisor-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.advisor-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 36px 28px; text-align: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.advisor-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(201,168,76,0.2); transform: translateY(-4px);
+}
+.advisor-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  margin: 0 auto 20px; display: flex; align-items: center;
+  justify-content: center; font-family: var(--serif);
+  font-size: 24px; font-weight: 400;
+  border: 2px solid rgba(201,168,76,0.3);
+}
+.advisor-avatar.a1 { background: rgba(201,168,76,0.15); color: var(--gold-light); }
+.advisor-avatar.a2 { background: rgba(42,84,120,0.4); color: rgba(255,255,255,0.7); }
+.advisor-avatar.a3 { background: rgba(201,168,76,0.1); color: var(--gold); }
+.advisor-card h4 {
+  font-family: var(--serif); font-size: 18px; font-weight: 400;
+  color: var(--white); margin-bottom: 4px;
+}
+.advisor-role {
+  font-size: 12px; font-weight: 500; color: var(--gold);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+}
+.advisor-card p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+/* ====== ENROLL ====== */
+.enroll {
+  padding: 110px 0;
+  background: var(--cream);
+  position: relative;
+}
+.enroll-inner { max-width: 600px; margin: 0 auto; }
+.enroll-header { text-align: center; margin-bottom: 40px; }
+.enroll h2 {
+  font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400; line-height: 1.15; color: var(--navy); margin-bottom: 12px;
+}
+.enroll .lead {
+  font-size: 16px; color: var(--gray-500); font-weight: 300; line-height: 1.7;
+}
+.enroll-form-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: 16px; padding: 40px 36px;
+  box-shadow: 0 8px 40px rgba(15,42,68,0.06);
+}
+.enroll-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 12px;
+}
+.enroll-field { margin-bottom: 12px; }
+.enroll-field label {
+  display: block; font-size: 13px; font-weight: 500;
+  color: var(--navy); margin-bottom: 6px;
+}
+.enroll-field input[type="text"],
+.enroll-field input[type="email"] {
+  width: 100%; padding: 14px 16px;
+  border: 1px solid var(--gray-300); border-radius: 8px;
+  font-family: var(--sans); font-size: 14px;
+  background: var(--cream); color: var(--gray-900);
+  transition: border-color 0.3s; outline: none;
+}
+.enroll-field input:focus { border-color: var(--gold); }
+.enroll-field input::placeholder { color: var(--gray-500); }
+
+.enroll-checks {
+  margin: 20px 0 8px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.enroll-check {
+  display: flex; align-items: flex-start; gap: 10px; cursor: pointer;
+}
+.enroll-check input[type="checkbox"] {
+  width: 18px; height: 18px; margin-top: 2px;
+  accent-color: var(--gold); flex-shrink: 0; cursor: pointer;
+}
+.enroll-check span { font-size: 13px; color: var(--gray-700); line-height: 1.5; }
+
+.enroll-member-status {
+  margin: 20px 0 28px;
+  padding: 16px; background: var(--cream); border-radius: 10px;
+}
+.enroll-member-status p {
+  font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 10px;
+}
+.member-options { display: flex; flex-direction: column; gap: 8px; }
+.member-option {
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+}
+.member-option input[type="radio"] {
+  accent-color: var(--gold); cursor: pointer;
+}
+.member-option span { font-size: 13px; color: var(--gray-700); }
+
+.enroll-submit { text-align: center; margin-bottom: 20px; }
+.enroll-submit .btn-primary {
+  width: 100%; justify-content: center; padding: 16px 36px;
+}
+
+.enroll-alt-ctas {
+  display: flex; gap: 12px; justify-content: center;
+}
+.enroll-alt-ctas a {
+  font-size: 13px; font-weight: 500; color: var(--navy-mid);
+  text-decoration: none; padding: 10px 20px;
+  border: 1px solid var(--gray-300); border-radius: 8px;
+  transition: all 0.3s;
+}
+.enroll-alt-ctas a:hover {
+  border-color: var(--gold); color: var(--gold);
+}
+
+/* ====== FAQ ====== */
+.faq {
+  padding: 100px 0 110px;
+  background: var(--white);
+  position: relative;
+}
+.faq::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gray-200), transparent);
+}
+.faq-header { text-align: center; margin-bottom: 56px; }
+.faq h2 {
+  font-family: var(--serif); font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400; color: var(--navy);
+}
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--gray-200); }
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 22px 0; background: none; border: none;
+  font-family: var(--sans); font-size: 15px; font-weight: 500;
+  color: var(--navy); cursor: pointer; text-align: left;
+  transition: color 0.3s; gap: 16px;
+}
+.faq-question:hover { color: var(--gold); }
+.faq-toggle {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gold-pale); display: flex;
+  align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.3s;
+  font-size: 16px; color: var(--navy); line-height: 1;
+}
+.faq-item.open .faq-toggle {
+  background: var(--gold); color: var(--white); transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-item.open .faq-answer { max-height: 300px; }
+.faq-answer p {
+  padding: 0 0 22px; font-size: 14px;
+  color: var(--gray-500); line-height: 1.7; max-width: 580px;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background: var(--navy-deep); padding: 56px 0 36px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.footer-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 36px;
+}
+.footer-brand { display: flex; align-items: center; gap: 12px; }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.4);
+  text-decoration: none; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold-light); }
+.footer-legal {
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.7; max-width: 800px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+  .gain-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .topic-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .format-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .deal-layout { grid-template-columns: 1fr; gap: 48px; }
+  .deal-visual { order: -1; }
+  .cert-layout { grid-template-columns: 1fr; gap: 48px; }
+  .cert-visual { order: -1; }
+  .advisor-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(15,42,68,0.98); backdrop-filter: blur(12px);
+    padding: 24px; gap: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .hero-note { flex-direction: column; gap: 20px; }
+  .enroll-row { grid-template-columns: 1fr; }
+  .enroll-form-card { padding: 28px 20px; }
+  .enroll-alt-ctas { flex-direction: column; align-items: stretch; }
+  .enroll-alt-ctas a { text-align: center; }
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .cert-badge { width: 260px; padding: 36px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo">AV</div>
+      <div class="nav-wordmark">Alumni Ventures <span>Academy</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#topics">What You'll Learn</a></li>
+      <li><a href="#formats">How to Learn</a></li>
+      <li><a href="#deal-review">Deal Review</a></li>
+      <li><a href="#advisors">Advisors</a></li>
+      <li><a href="#enroll" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">AV Academy</div>
+      <h1>Venture capital,<br><em>demystified.</em></h1>
+      <p class="hero-sub">Learn how VC works, why it matters for your portfolio, and how to make your first investment — online, live, or in person. Built by the team behind America's largest VC firm for individual investors.</p>
+      <div class="hero-actions">
+        <a href="#enroll" class="btn-primary">
+          Get Started
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="#topics" class="btn-secondary">See What You'll Learn</a>
+      </div>
+      <div class="hero-note">
+        <div class="hero-stat">
+          <strong>$1.7B+</strong>
+          Invested across 1,400+ companies
+        </div>
+        <div class="hero-stat">
+          <strong>700K+</strong>
+          Members in our network
+        </div>
+        <div class="hero-stat">
+          <strong>15 yrs</strong>
+          Investing in venture capital
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL GAIN -->
+<section class="gain">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What You'll Walk Away With</div>
+      <h2>Real understanding. Real confidence. Ready to invest.</h2>
+    </div>
+    <div class="gain-grid">
+      <div class="gain-card reveal reveal-delay-1">
+        <div class="gain-icon">&#9670;</div>
+        <h3>Understand the asset class</h3>
+        <p>Know how venture capital actually works — the mechanics, the risks, the returns, and why it's different from anything else in your portfolio.</p>
+      </div>
+      <div class="gain-card reveal reveal-delay-2">
+        <div class="gain-icon">&#9733;</div>
+        <h3>Know if it's right for you</h3>
+        <p>Get honest, data-backed answers about whether VC fits your financial picture — and how much to allocate if it does.</p>
+      </div>
+      <div class="gain-card reveal reveal-delay-3">
+        <div class="gain-icon">&#10003;</div>
+        <h3>Be ready to make your move</h3>
+        <p>Walk away knowing exactly how to choose a fund, what to expect after you invest, and how AV manages your capital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL LEARN -->
+<section class="topics" id="topics">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What You'll Learn</div>
+      <h2>Three topics. Everything you need.</h2>
+      <p class="lead">Each topic builds on the last. Available in every format — take them online, in a live session, or at a bootcamp.</p>
+    </div>
+    <div class="topic-grid">
+      <div class="topic-card reveal reveal-delay-1">
+        <div class="topic-num">01</div>
+        <div class="topic-title">VC Fundamentals</div>
+        <p class="topic-desc">What venture capital is, how it works, the J-curve, risk and return dynamics, liquidity expectations — and why VC has become an essential part of a diversified portfolio.</p>
+        <div class="topic-formats">
+          <span class="topic-format-tag">Online</span>
+          <span class="topic-format-tag">Live</span>
+          <span class="topic-format-tag">In-Person</span>
+        </div>
+      </div>
+      <div class="topic-card reveal reveal-delay-2">
+        <div class="topic-num">02</div>
+        <div class="topic-title">The Professional Approach</div>
+        <p class="topic-desc">How a professional VC firm evaluates deals, builds a portfolio, manages risk, and generates returns. See inside AV's process — from deal flow to due diligence to fund construction.</p>
+        <div class="topic-formats">
+          <span class="topic-format-tag">Online</span>
+          <span class="topic-format-tag">Live</span>
+          <span class="topic-format-tag">In-Person</span>
+        </div>
+      </div>
+      <div class="topic-card reveal reveal-delay-3">
+        <div class="topic-num">03</div>
+        <div class="topic-title">Your First Investment</div>
+        <p class="topic-desc">How to choose a fund, what the minimums look like, what happens after you invest, tax considerations, and the exact steps to make your first commitment.</p>
+        <div class="topic-formats">
+          <span class="topic-format-tag">Online</span>
+          <span class="topic-format-tag">Live</span>
+          <span class="topic-format-tag">In-Person</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW YOU'LL LEARN -->
+<section class="formats" id="formats">
+  <div class="container">
+    <div class="formats-header reveal">
+      <div class="section-label">How You'll Learn</div>
+      <h2>Pick the format that fits your life.</h2>
+      <p class="lead">Same content, three ways to experience it. Go at your own pace, join a live group, or do it all in a day.</p>
+    </div>
+    <div class="format-grid">
+      <div class="format-card reveal reveal-delay-1">
+        <div class="format-icon">&#128187;</div>
+        <h3>Online</h3>
+        <div class="format-subtitle">Self-paced &middot; Start anytime</div>
+        <p>Videos, guides, and interactive content you work through on your own schedule. Start today, finish whenever you're ready.</p>
+        <ul class="format-details">
+          <li>On-demand video and reading</li>
+          <li>Progress tracking and check-ins</li>
+          <li>Typically 4–8 weeks</li>
+        </ul>
+      </div>
+      <div class="format-card reveal reveal-delay-2">
+        <div class="format-icon">&#127909;</div>
+        <h3>Live Sessions</h3>
+        <div class="format-subtitle">4 weeks &middot; 1 hour / week</div>
+        <p>Four weekly Zoom sessions with AV investment professionals. Ask questions in real time, learn alongside a small cohort.</p>
+        <ul class="format-details">
+          <li>Led by AV investment team</li>
+          <li>Live Q&A and discussion</li>
+          <li>Recordings if you miss one</li>
+        </ul>
+      </div>
+      <div class="format-card reveal reveal-delay-3">
+        <div class="format-icon">&#127961;</div>
+        <h3>In-Person Bootcamp</h3>
+        <div class="format-subtitle">Half-day &middot; Major cities</div>
+        <p>All three topics in one immersive half-day. Meet AV leaders face to face, do hands-on exercises, and network with fellow members.</p>
+        <ul class="format-details">
+          <li>4-hour intensive session</li>
+          <li>NYC, Boston, SF, Chicago + more</li>
+          <li>Portfolio exercises included</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- READY TO INVEST? -->
+<section class="ready-cta" id="ready">
+  <div class="container">
+    <div class="ready-inner reveal">
+      <div class="ready-label">You're closer than you think</div>
+      <h2>Ready to <em>invest?</em></h2>
+      <p>You don't need to finish every topic or earn a certificate to get started. Once you understand the basics and feel confident — you're ready.</p>
+      <div class="ready-actions">
+        <a href="#enroll" class="btn-primary">Explore Funds</a>
+        <a href="#" class="btn-secondary">Book a Call &rarr;</a>
+      </div>
+      <p class="ready-note"><strong>No pressure, no timeline.</strong> Some members invest after one session. Others take months. Either way, your advisor is here when you are.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEAL REVIEW -->
+<section class="deal-review" id="deal-review">
+  <div class="container">
+    <div class="deal-layout">
+      <div class="deal-content reveal">
+        <div class="section-label">Learn by Doing</div>
+        <h2>Monthly deal review with real VCs</h2>
+        <p>Theory builds the foundation. Practice builds the instincts. Join monthly live sessions where AV's investment team walks through actual deals — and you learn to think like a VC.</p>
+        <div class="deal-features">
+          <div class="deal-feature">
+            <div class="deal-feature-icon">&#128200;</div>
+            <div>
+              <h4>Real deal walkthroughs</h4>
+              <p>See how AV evaluates actual companies — the thesis, the market, and the risks.</p>
+            </div>
+          </div>
+          <div class="deal-feature">
+            <div class="deal-feature-icon">&#128483;</div>
+            <div>
+              <h4>Investment team-led</h4>
+              <p>The same people making AV's investment decisions lead each session.</p>
+            </div>
+          </div>
+          <div class="deal-feature">
+            <div class="deal-feature-icon">&#129504;</div>
+            <div>
+              <h4>Build pattern recognition</h4>
+              <p>Monthly exposure develops the investor instincts that only come from seeing real deals.</p>
+            </div>
+          </div>
+        </div>
+        <div class="deal-note">Open to all AV Academy members. No certificate required — just show up curious.</div>
+      </div>
+      <div class="deal-visual reveal reveal-delay-2">
+        <div class="deal-card-mock">
+          <div class="deal-mock-header">March Deal Review</div>
+          <div class="deal-mock-date">Thursday, Mar 19 &middot; 12:00 PM ET &middot; Zoom</div>
+          <ul class="deal-mock-agenda">
+            <li><span class="time">12:00</span> Market context and trends</li>
+            <li><span class="time">12:10</span> Deal #1: Series B — AI infrastructure</li>
+            <li><span class="time">12:30</span> Deal #2: Series A — Climate tech</li>
+            <li><span class="time">12:45</span> Member Q&A and discussion</li>
+          </ul>
+          <div class="deal-mock-footer">
+            <div class="deal-mock-attendees">
+              <div class="deal-mock-avatar av1">JT</div>
+              <div class="deal-mock-avatar av2">KL</div>
+              <div class="deal-mock-avatar av3">AV</div>
+              <div class="deal-mock-avatar av4">MR</div>
+              <div class="deal-mock-avatar av5">+24</div>
+            </div>
+            <div class="deal-mock-spots">All members welcome</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATE -->
+<section class="certificate" id="certificate">
+  <div class="container">
+    <div class="cert-layout">
+      <div class="cert-content reveal">
+        <div class="section-label">Go Deeper</div>
+        <h2>Want the full experience? Earn your certificate.</h2>
+        <p>Already investing or planning to? Great — you don't need this. But if you want to master the material and have something to show for it, the AV Academy certificate is here for you.</p>
+        <div class="cert-steps">
+          <div class="cert-step">
+            <div class="cert-step-num">1</div>
+            <div>
+              <h4>Complete all three topics</h4>
+              <p>In any format — online, live, or in person.</p>
+            </div>
+          </div>
+          <div class="cert-step">
+            <div class="cert-step-num">2</div>
+            <div>
+              <h4>Pass the final assessment</h4>
+              <p>A short, straightforward quiz. Not designed to trick you — designed to confirm you've got it. Retake anytime.</p>
+            </div>
+          </div>
+          <div class="cert-step">
+            <div class="cert-step-num">3</div>
+            <div>
+              <h4>Earn your certificate</h4>
+              <p>A credential that says you put in the work. Share it, frame it, or just know you did the thing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cert-visual reveal reveal-delay-2">
+        <div class="cert-badge">
+          <div class="cert-badge-inner">
+            <div class="cert-seal"><span class="cert-seal-icon">&#127942;</span></div>
+            <div class="cert-badge-title">Certificate of Completion</div>
+            <div class="cert-badge-name">AV Academy</div>
+            <div class="cert-badge-sub">Venture Capital Foundations</div>
+            <div class="cert-badge-line"></div>
+            <div class="cert-badge-org">Alumni Ventures</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVISORS -->
+<section class="advisors" id="advisors">
+  <div class="container">
+    <div class="advisors-header reveal">
+      <div class="section-label">Your Guides</div>
+      <h2>Meet your advisors</h2>
+      <p class="lead">Real investors. Real experience. Here to guide you through the process — not sell you something.</p>
+    </div>
+    <div class="advisor-grid">
+      <div class="advisor-card reveal reveal-delay-1">
+        <div class="advisor-avatar a1">SB</div>
+        <h4>Sarah Brennan</h4>
+        <div class="advisor-role">Managing Director</div>
+        <p>15+ years in venture investing. Previously at a top-10 VC fund. Leads AV's investor education and deal review sessions.</p>
+      </div>
+      <div class="advisor-card reveal reveal-delay-2">
+        <div class="advisor-avatar a2">MK</div>
+        <h4>Marcus Kim</h4>
+        <div class="advisor-role">VP, Investments</div>
+        <p>Former fintech founder turned investor. Specializes in making complex VC concepts accessible for first-time investors.</p>
+      </div>
+      <div class="advisor-card reveal reveal-delay-3">
+        <div class="advisor-avatar a3">RL</div>
+        <h4>Rachel Liu</h4>
+        <div class="advisor-role">Director, Member Experience</div>
+        <p>Guides new members from curiosity to confidence. Built AV's onboarding process and oversees Academy programming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENROLL -->
+<section class="enroll" id="enroll">
+  <div class="container">
+    <div class="enroll-inner reveal">
+      <div class="enroll-header">
+        <div class="section-label">Get Started</div>
+        <h2>Ready to learn?</h2>
+        <p class="lead">AV Academy is free and exclusive to Alumni Ventures members and accredited investors.</p>
+      </div>
+      <div class="enroll-form-card">
+        <form onsubmit="event.preventDefault(); document.getElementById('enrollBtn').textContent='You\'re in ✓'; document.getElementById('enrollBtn').style.background='#2a5478';">
+          <div class="enroll-row">
+            <div class="enroll-field">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="First name" required>
+            </div>
+            <div class="enroll-field">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Last name" required>
+            </div>
+          </div>
+          <div class="enroll-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+          </div>
+          <div class="enroll-checks">
+            <label class="enroll-check">
+              <input type="checkbox" required>
+              <span>I confirm I am an accredited investor</span>
+            </label>
+            <label class="enroll-check">
+              <input type="checkbox" required>
+              <span>I agree to keep program materials confidential</span>
+            </label>
+          </div>
+          <div class="enroll-member-status">
+            <p>Your AV membership status:</p>
+            <div class="member-options">
+              <label class="member-option">
+                <input type="radio" name="member-status" value="existing" checked>
+                <span>I'm already an AV member or investor</span>
+              </label>
+              <label class="member-option">
+                <input type="radio" name="member-status" value="new">
+                <span>I'd like to join the AV syndicate</span>
+              </label>
+            </div>
+          </div>
+          <div class="enroll-submit">
+            <button type="submit" class="btn-primary" id="enrollBtn">Get Started</button>
+          </div>
+        </form>
+      </div>
+      <div class="enroll-alt-ctas" style="margin-top: 20px;">
+        <a href="#">&#128222; Book a Call</a>
+        <a href="#">&#9881; Customize Your Experience</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <div class="section-label">Questions</div>
+      <h2>Frequently Asked</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How long does it take?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Depends on your format. The in-person bootcamp covers everything in a half-day. Live Zoom sessions run four weeks (one hour per week). Online self-serve is typically 4–8 weeks at your own pace.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is it really free?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. AV Academy is free for all Alumni Ventures members. We believe better-informed investors make better decisions — that's good for everyone.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Do I need investing experience?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. The first topic (VC Fundamentals) starts from scratch. Whether you've invested in public markets for years or are completely new — we meet you where you are.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What's the assessment like?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>A short, straightforward quiz covering the key ideas from each topic. It's designed to confirm understanding, not trip you up. You can retake it if needed.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I switch formats after I start?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. Start online and decide you'd rather do the bootcamp? No problem. The content is the same across all formats — your progress carries over.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Do I need the certificate to invest?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. You can invest whenever you feel ready — the certificate is entirely optional. It's there for people who want the full experience, but it's not a requirement for anything. Many members invest after just a topic or two.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Who can access the deal review sessions?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>All AV Academy members can join deal review sessions — no certificate required. Just enroll in the Academy and you're in. It's one of the best ways to learn, regardless of where you are in the program.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo" style="width:32px;height:32px;font-size:15px;">AV</div>
+        <div class="nav-wordmark" style="font-size:13px;">Alumni Ventures <span>Academy</span></div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">About Alumni Ventures</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-legal">
+      Alumni Ventures is a venture capital firm. AV Academy is an educational resource for members and does not constitute investment advice. Past performance is not indicative of future results. Venture capital investments are speculative, illiquid, and involve a high degree of risk, including the possible loss of your entire investment. &copy; 2026 Alumni Ventures. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+document.getElementById('mobileToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
